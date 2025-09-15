@@ -91,7 +91,7 @@ const EnvelopeInvitation = () => {
       {/* Flash and Confetti Effects */}
       {isOpening && (
         <div className="fixed inset-0 z-50 pointer-events-none">
-          {/* <div className="absolute inset-0 bg-white animate-flash"></div> */}
+          <div className="absolute inset-0 bg-white animate-flash"></div>
         </div>
       )}
       {isOpen && <ConfettiExplosion />}
@@ -273,7 +273,7 @@ const EnvelopeInvitation = () => {
       <VideoModal 
   isOpen={isVideoModalOpen} 
   onClose={() => setIsVideoModalOpen(false)} 
-  videoSrc="/videos/1.mp4"  // Place invitation.mp4 inside public/videos/
+  videoSrc="/videos/2.mp4"  // Place invitation.mp4 inside public/videos/
  />
 
     </div>

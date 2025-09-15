@@ -1,18 +1,48 @@
-import React from 'react';
-import { MapPin, Mail, Video, Calendar, Heart, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Mail, Video, Calendar, Heart, Star, X } from 'lucide-react';
 
 interface LandingPageProps {
   onOpenInvitation: () => void;
 }
 
+// Reusable Video Modal
+const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void; videoSrc: string }> = ({ isOpen, onClose, videoSrc }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-11/12 max-w-3xl bg-black rounded-xl shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 text-white hover:text-gray-300 transition"
+        >
+          <X size={28} />
+        </button>
+
+        <video className="w-full h-auto" controls autoPlay>
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  );
+};
+
 const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   const handleLocationClick = () => {
     window.open('https://maps.google.com/?q=The+Garden+Venue+123+Celebration+Street', '_blank');
   };
 
   const handleVideoClick = () => {
-    // Placeholder for AI video functionality
-    alert('AI Video feature coming soon!');
+    setIsVideoOpen(true);
   };
 
   return (
@@ -49,13 +79,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl flex items-center justify-center overflow-hidden">
                   <img 
-                    src="https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                    src="Image/1.jpg" 
                     alt="Birthday Celebration" 
                     className="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-xl"></div>
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Sarah's 25th Birthday</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Sarah's 1st Birthday</h2>
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-5 h-5" />
                       <span className="text-lg">March 15th, 2025</span>
@@ -110,7 +140,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">AI Video</h3>
                 <p className="text-blue-100 text-sm">Personal Message</p>
-                <p className="text-blue-200 text-xs">Coming soon</p>
+                <p className="text-blue-200 text-xs">Tap to watch</p>
               </div>
             </button>
           </div>
@@ -133,7 +163,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-white/20">
               <Heart className="w-6 h-6 text-pink-300 mx-auto mb-2" />
-              <p className="text-white font-semibold">25th Birthday</p>
+              <p className="text-white font-semibold">1st Birthday</p>
               <p className="text-blue-200 text-sm">Special Day</p>
             </div>
             
@@ -158,6 +188,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <VideoModal
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
+        videoSrc="/videos/2.mp4" // place your video in public/videos/
+      />
     </div>
   );
 };
