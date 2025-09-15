@@ -13,7 +13,7 @@ const colors = {
   star: "text-yellow-400",
 
   // Main photo section
-  mainPhotoOverlay: "bg-gradient-to-r from-pink-500 to-rose-600",
+  // mainPhotoOverlay: "bg-gradient-to-r from-pink-200 to-rose-100",
   mainPhotoBg: "bg-gradient-to-br from-pink-100 to-rose-100",
   mainPhotoOverlay2: "bg-gradient-to-t from-rose-900/30 to-transparent",
 
@@ -103,7 +103,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           {/* Main Photo */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="relative group">
-              <div className={`absolute inset-0 ${colors.mainPhotoOverlay} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300`}></div>
+              <div className={`absolute inset-0 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300`}></div>
               <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
                 <div className={`aspect-video ${colors.mainPhotoBg} rounded-xl flex items-center justify-center overflow-hidden`}>
                   <img 
@@ -111,7 +111,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                     alt="Birthday Celebration" 
                     className="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500"
                   />
-                  <div className={`absolute inset-0 ${colors.mainPhotoOverlay2} rounded-xl`}></div>
+                  <div className={`absolute inset-0 rounded-xl`}></div>
                   <div className="absolute bottom-6 left-6 text-white">
                     <h2 className="text-2xl md:text-3xl font-bold mb-2">Amanda Sarah's 1st Birthday</h2>
                     <div className="flex items-center space-x-2">
