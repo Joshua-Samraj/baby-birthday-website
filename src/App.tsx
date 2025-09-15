@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import EnvelopeInvitation from './components/EnvelopeInvitation';
 
@@ -8,11 +7,27 @@ function App() {
 
   const handleOpenInvitation = () => {
     setShowInvitation(true);
+    // Push a new history state so back button works
+    window.history.pushState({ page: "invitation" }, "", "");
   };
 
   const handleBackToLanding = () => {
     setShowInvitation(false);
+    // Go back in history
+    window.history.back();
   };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      // When user presses back, close invitation
+      setShowInvitation(false);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <div className="relative">
