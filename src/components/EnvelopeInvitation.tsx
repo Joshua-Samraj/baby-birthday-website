@@ -91,14 +91,14 @@ const EnvelopeInvitation = () => {
       {/* Flash and Confetti Effects */}
       {isOpening && (
         <div className="fixed inset-0 z-50 pointer-events-none">
-          <div className="absolute inset-0 bg-white animate-flash"></div>
+          {/* <div className="absolute inset-0 bg-white animate-flash"></div> */}
         </div>
       )}
       {isOpen && <ConfettiExplosion />}
 
       <div className="relative w-full max-w-4xl flex flex-col items-center">
         {/* Envelope Container */}
-        <div
+          <div
           className={`relative transition-all duration-1000 transform ${
             isOpening
               ? "animate-shake scale-110"
@@ -258,11 +258,11 @@ const EnvelopeInvitation = () => {
                     </a>
                 </div>
 
-                <div className="text-center mt-4 md:mt-6">
+                {/* <div className="text-center mt-4 md:mt-6">
                     <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-semibold text-base md:text-lg shadow-lg transform transition-all duration-300 hover:scale-105">
                         RSVP Now
                     </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
