@@ -97,7 +97,7 @@ const EnvelopeInvitation = () => {
     setTimeout(() => {
       setIsOpen(true);
       setIsOpening(false);
-    }, 2000);
+    }, 200);
   };
 
   return (
@@ -114,7 +114,8 @@ const EnvelopeInvitation = () => {
         <div
           className={`relative transition-all duration-1000 transform ${
             isOpening
-              ? "animate-shake scale-210"
+              // ? "animate-shake scale-210"
+              ? ""
               : isOpen
               ? "scale-95 opacity-0 -translate-y-24"
               : "scale-100 opacity-100"
@@ -125,7 +126,7 @@ const EnvelopeInvitation = () => {
           <div
             className={`absolute top-0 left-0 w-full ${colors.envelopeFlap} transition-transform duration-700 ease-in-out ${
               isOpening
-                ? "animate-flapShake"
+                ? ""
                 : isOpen
                 ? "[transform:rotateX(180deg)]"
                 : "[transform:rotateX(0deg)]"
