@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import EnvelopeInvitation from './components/EnvelopeInvitation';
-
+import Footer from './components/footer';
 function App() {
   const [showInvitation, setShowInvitation] = useState(false);
 
@@ -30,20 +30,24 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
-      {!showInvitation ? (
-        <LandingPage onOpenInvitation={handleOpenInvitation} />
-      ) : (
-        <div>
-          <button
-            onClick={handleBackToLanding}
-            className="fixed top-4 left-4 z-50 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
-          >
-            ← Back
-          </button>
-          <EnvelopeInvitation />
-        </div>
-      )}
+    <div className="relative min-h-screen flex flex-col">
+      <div className="flex-1">
+        {!showInvitation ? (
+          <LandingPage onOpenInvitation={handleOpenInvitation} />
+        ) : (
+          <div className="relative">
+            <button
+              onClick={handleBackToLanding}
+              className="fixed top-4 left-4 z-50 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+            >
+              ← Back
+            </button>
+            <EnvelopeInvitation />
+          </div>
+        )}
+      </div>
+
+     <Footer />
     </div>
   );
 }
