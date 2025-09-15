@@ -205,7 +205,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
+          {/* <div className="text-center mt-12">
             <p className="text-blue-100 text-lg mb-4">Ready to celebrate with us?</p>
             <button
               onClick={onOpenInvitation}
@@ -213,7 +213,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             >
               View Full Invitation ✨
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
