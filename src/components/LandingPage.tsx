@@ -85,10 +85,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-xl"></div>
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Sarah's 1st Birthday</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Amanda Sarah's 1st Birthday</h2>
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-5 h-5" />
-                      <span className="text-lg">March 15th, 2025</span>
+                      <span className="text-lg">12/10/25</span>
                     </div>
                   </div>
                 </div>
@@ -149,15 +149,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-4">
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-white/20">
               <Calendar className="w-6 h-6 text-blue-300 mx-auto mb-2" />
-              <p className="text-white font-semibold">March 15th</p>
-              <p className="text-blue-200 text-sm">Saturday</p>
+              <p className="text-white font-semibold">12/10/25</p>
+              <p className="text-blue-200 text-sm">Sunday</p>
             </div>
             
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-white/20">
               <div className="w-6 h-6 mx-auto mb-2 flex items-center justify-center">
                 <span className="text-blue-300 font-bold text-lg">🕰️</span>
               </div>
-              <p className="text-white font-semibold">7:00 PM</p>
+              <p className="text-white font-semibold">6:00 PM</p>
               <p className="text-blue-200 text-sm">Start Time</p>
             </div>
             
