@@ -11,7 +11,7 @@ const colors = {
   buttonHover: "hover:from-pink-500 hover:to-fuchsia-600",
   headerGradient: "bg-gradient-to-r from-pink-600 via-rose-500 to-fuchsia-600",
   textPrimary: "text-pink-800",
-  textSecondary: "text-gray-600",
+  textSecondary: "text-gray-600", 
   detailBox: "bg-pink-50",
   videoBox: "bg-gradient-to-br from-pink-100 to-rose-100",
   rsvpBox: "bg-gradient-to-r from-pink-50 to-rose-50",
@@ -54,19 +54,21 @@ const VideoModal = ({ isOpen, onClose, videoSrc }) => {
 const ConfettiExplosion = () => {
   const [confetti, setConfetti] = useState([]);
 
-  useEffect(() => {
-    const confettiCount = 100;
-    const newConfetti = Array.from({ length: confettiCount }).map((_, i) => ({
-      id: i,
-      style: {
-        left: `${Math.random() * 100}%`,
-        animationDuration: `${Math.random() * 3 + 4}s`,
-        backgroundColor: `hsl(${Math.random() * 360}, 100%, 50%)`,
-      },
-      size: Math.random() * 8 + 4,
-    }));
-    setConfetti(newConfetti);
-  }, []);
+ useEffect(() => {
+  const confettiCount = 100;
+  const newConfetti = Array.from({ length: confettiCount }).map((_, i) => ({
+    id: i,
+    style: {
+      left: `${Math.random() * 100}%`,
+      animationDuration: `${Math.random() * 3 + 4}s`,
+      // Pink color range: hue 330–360 (magenta to pink)
+      backgroundColor: `hsl(${330 + Math.random() * 30}, 80%, 65%)`,
+    },
+    size: Math.random() * 8 + 4,
+  }));
+  setConfetti(newConfetti);
+}, []);
+
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
@@ -112,7 +114,7 @@ const EnvelopeInvitation = () => {
         <div
           className={`relative transition-all duration-1000 transform ${
             isOpening
-              ? "animate-shake scale-110"
+              ? "animate-shake scale-210"
               : isOpen
               ? "scale-95 opacity-0 -translate-y-24"
               : "scale-100 opacity-100"
@@ -137,9 +139,9 @@ const EnvelopeInvitation = () => {
             }}
           >
             <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-              <div className="w-12 h-10 md:w-16 md:h-12 bg-gradient-to-b from-blue-300 to-blue-400 rounded-full flex items-center justify-center shadow-lg">
-                <Gift className={`w-6 h-6 md:w-8 md:h-8 ${colors.giftIcon}`} />
-              </div>
+                <div className="w-12 h-10 md:w-16 md:h-12 bg-gradient-to-b from-blue-300 to-blue-400 rounded-full flex items-center justify-center shadow-lg">
+                  <Gift className={`w-6 h-6 md:w-8 md:h-8 ${colors.giftIcon}`} />
+                </div>
             </div>
           </div>
 
@@ -161,13 +163,13 @@ const EnvelopeInvitation = () => {
         {/* Invitation Image */}
 {isOpen && (
   <div
-    className={`absolute top-0 md:inset-0 z-20 transition-all duration-1000 transform ${
+    className={`fixed inset-0 z-20 flex items-center justify-center transition-all duration-1000 transform ${
       isOpen
-        ? "translate-y-0 opacity-100 scale-100 animate-cardReveal"
-        : "translate-y-full opacity-0 scale-95"
+        ? "opacity-100 scale-100 animate-cardReveal"
+        : "opacity-0 scale-95"
     }`}
   >
-    <div className="w-full max-w-3xl mx-auto flex justify-center">
+    <div className="w-full max-w-3xl mx-auto flex justify-center px-4">
       <img
         src="/Image/Invitation.png" // <-- replace with your image path
         alt="Birthday Invitation"
@@ -176,6 +178,7 @@ const EnvelopeInvitation = () => {
     </div>
   </div>
 )}
+
 
       </div>
 
