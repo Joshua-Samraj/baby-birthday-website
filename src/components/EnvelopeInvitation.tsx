@@ -171,7 +171,7 @@ const EnvelopeInvitation = () => {
                 <div className="space-y-4 md:space-y-6 opacity-0 animate-fadeInStagger" style={{ animationDelay: '0.5s'}}>
                   <div className="text-center mb-4 md:mb-8">
                     <h2 className="text-2xl md:text-3xl font-bold text-blue-800 mb-2">
-                      Sarah's 25th Birthday
+                      Amanda Sarah's 1st Birthday
                     </h2>
                     <p className="text-base md:text-lg text-gray-600">
                       Let's celebrate together!
@@ -181,8 +181,8 @@ const EnvelopeInvitation = () => {
                   <div className="space-y-3 md:space-y-4">
                     {/* Date, Time, Location with staggered animation */}
                     {[
-                      { icon: Calendar, label: "Date", value: "Saturday, March 15th, 2025", subvalue: ""},
-                      { icon: Clock, label: "Time", value: "7:00 PM - 11:00 PM", subvalue: ""},
+                      { icon: Calendar, label: "Date", value: "Saturday, 12/10/25", subvalue: ""},
+                      { icon: Clock, label: "Time", value: "6:00pm", subvalue: ""},
                       { icon: MapPin, label: "Location", value: "The Garden Venue", subvalue: "123 Celebration St, Party City"},
                     ].map((item, index) => (
                       <div key={index} className="flex items-center space-x-3 md:space-x-4 p-3 bg-blue-50 rounded-lg opacity-0 animate-fadeInStagger" style={{ animationDelay: `${0.7 + index * 0.2}s` }}>
@@ -206,17 +206,34 @@ const EnvelopeInvitation = () => {
                         onClick={() => setIsVideoModalOpen(true)}
                         className="w-full aspect-video bg-gray-200 rounded-lg flex items-center justify-center group hover:bg-gray-300 transition-colors"
                     >
-                      <div className="text-center">
+                      <video
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        src="/videos/2.mp4#t=0.1" /* The #t=0.1 helps browsers display the first frame */
+                        muted
+                        playsInline
+                        preload="metadata"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                      {/* <div className="text-center">
                         <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 group-hover:scale-110 transition-transform">
                           <Play className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" fill="currentColor"/>
                         </div>
                         <p className="text-gray-600 text-sm md:text-base">Click to play</p>
+                      </div> */}
+                      <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-all duration-300 group-hover:bg-opacity-50">
+                        <div className="text-center">
+                          <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-500 bg-opacity-80 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-3 group-hover:scale-110 transition-transform shadow-lg border-2 border-white/50">
+                            <Play className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" fill="currentColor"/>
+                          </div>
+                          <p className="text-white text-sm md:text-base font-semibold drop-shadow-md">Click to play</p>
+                        </div>
                       </div>
                     </button>
                   </div>
                   
                   {/* Party Theme & Dress Code */}
-                  <div className="bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl p-4 md:p-6 opacity-0 animate-fadeInStagger" style={{ animationDelay: '1.5s'}}>
+                  {/* <div className="bg-gradient-to-br from-indigo-100 to-blue-100 rounded-xl p-4 md:p-6 opacity-0 animate-fadeInStagger" style={{ animationDelay: '1.5s'}}>
                     <h3 className="text-lg md:text-xl font-bold text-blue-800 mb-3 md:mb-4">Party Details</h3>
                     <div className="space-y-2 md:space-y-3">
                         <div>
@@ -228,17 +245,17 @@ const EnvelopeInvitation = () => {
                             <p className="text-gray-600 text-sm md:text-base">Semi-formal attire</p>
                         </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
               {/* RSVP Section */}
               <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 md:p-8 opacity-0 animate-fadeInStagger" style={{ animationDelay: '1.7s'}}>
                 <div className="text-center mb-4 md:mb-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">RSVP</h3>
-                  <p className="text-gray-600 text-sm md:text-base">
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">Contact Details</h3>
+                  {/* <p className="text-gray-600 text-sm md:text-base">
                     Please confirm your attendance by March 10th
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto">
