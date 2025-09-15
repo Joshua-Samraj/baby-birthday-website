@@ -1,0 +1,50 @@
+/* ===========================
+   THEME VARIABLES
+=========================== */
+:root {
+  --color-primary: #4f46e5;     /* Indigo */
+  --color-secondary: #6366f1;   /* Lighter Indigo */
+  --color-tertiary: #9333ea;    /* Purple */
+  --color-accent: #ec4899;      /* Pink */
+  --color-highlight: #f59e0b;   /* Amber */
+  --color-light: #e5e7eb;       /* Light Gray */
+  --color-white: #ffffff;
+  --color-yellow: #facc15;      /* Yellow */
+  --color-orange: #fb923c;      /* Orange */
+  --color-pink: #f472b6;        /* Pink Accent */
+}
+
+/* ===========================
+   CUSTOM ANIMATIONS
+=========================== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Bounce Delay */
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+/* ===========================
+   BACKGROUND PATTERNS
+=========================== */
+.bg-blue-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0);
+  background-size: 20px 20px;
+}
