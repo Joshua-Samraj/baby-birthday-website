@@ -127,6 +127,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           {/* Action Buttons */}
 <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 justify-items-stretch">
   {/* Location */}
+  <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
   <button
     onClick={handleLocationClick}
     className="group w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
@@ -147,6 +148,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
       <p className="text-blue-200 text-xs">Tirunelveli</p>
     </div>
   </button>
+  </div>
 
   {/* AI Video */}
   <button
@@ -166,7 +168,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   </button>
 
   {/* E-Invitation */}
-  <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
+  
     <button
       onClick={onOpenInvitation}
       className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse`}
@@ -180,7 +182,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
         <p className="text-blue-200 text-xs">Tap to view details</p>
       </div>
     </button>
-  </div>
+ 
 </div>
 
 
