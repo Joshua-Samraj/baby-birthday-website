@@ -3,22 +3,24 @@ import { Play, Pause } from "lucide-react";
 
 const MusicPlayer = () => {
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true); // default = playing
+  const [isPlaying, setIsPlaying] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    // Try to auto play when component mounts
-    if (audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => {
+    const enableAudioOnScroll = () => {
+      if (audioRef.current && !isPlaying) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
           triggerPopup("🎵 Music Playing");
-        })
-        .catch((err) => {
-          console.warn("Autoplay blocked by browser:", err);
         });
-    }
-  }, []);
+        window.removeEventListener("scroll", enableAudioOnScroll);
+      }
+    };
+
+    window.addEventListener("scroll", enableAudioOnScroll);
+
+    return () => window.removeEventListener("scroll", enableAudioOnScroll);
+  }, [isPlaying]);
 
   const togglePlay = () => {
     if (isPlaying) {
