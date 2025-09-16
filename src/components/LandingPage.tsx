@@ -130,7 +130,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             {/* Location */}
             <button
               onClick={handleLocationClick}
-              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-full md:col-span-1"
+              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-1 md:col-span-1"
             >
               <div className="text-center">
                 {/* Mall Image */}

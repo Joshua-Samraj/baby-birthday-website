@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, Calendar, Clock, Phone, Mail, Gift, X, Play } from "lucide-react";
+import { Gift, X } from "lucide-react";
 
 // 🎨 Common Color Variables
 const colors = {
@@ -21,7 +21,14 @@ const colors = {
 };
 
 
-const VideoModal = ({ isOpen, onClose, videoSrc }) => {
+interface VideoModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  videoSrc: string;
+}
+
+const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoSrc }) => {
+
   if (!isOpen) return null;
 
   return (
@@ -52,7 +59,14 @@ const VideoModal = ({ isOpen, onClose, videoSrc }) => {
 };
 
 const ConfettiExplosion = () => {
-  const [confetti, setConfetti] = useState([]);
+  interface ConfettiPiece {
+  id: number;
+  style: React.CSSProperties;
+  size: number;
+}
+
+const [confetti, setConfetti] = useState<ConfettiPiece[]>([]);
+
 
  useEffect(() => {
   const confettiCount = 100;

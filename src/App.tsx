@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import EnvelopeInvitation from './components/EnvelopeInvitation';
 import Footer from './components/footer';

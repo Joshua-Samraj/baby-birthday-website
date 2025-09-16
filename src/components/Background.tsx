@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Play, Pause } from "lucide-react";
 
-const MusicPlayer = () => {
-  const audioRef = useRef(null);
+const MusicPlayer: React.FC = () => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState<string | false>(false);
 
   useEffect(() => {
     const enableAudioOnScroll = () => {
@@ -18,26 +18,25 @@ const MusicPlayer = () => {
     };
 
     window.addEventListener("scroll", enableAudioOnScroll);
-
     return () => window.removeEventListener("scroll", enableAudioOnScroll);
   }, [isPlaying]);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-      triggerPopup("⏸ Music Paused");
-    } else {
-      audioRef.current.play();
-      triggerPopup("🎵 Music Playing");
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        triggerPopup("⏸ Music Paused");
+      } else {
+        audioRef.current.play();
+        triggerPopup("🎵 Music Playing");
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
-  const triggerPopup = (message) => {
+  const triggerPopup = (message: string) => {
     setShowPopup(message);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000);
+    setTimeout(() => setShowPopup(false), 2000);
   };
 
   return (
