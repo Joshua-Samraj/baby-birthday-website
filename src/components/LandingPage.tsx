@@ -125,66 +125,64 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 justify-items-center">
-            
-            {/* Location */}
-            <button
-              onClick={handleLocationClick}
-              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-1 md:col-span-1"
-            >
-              <div className="text-center">
-                {/* Mall Image */}
-                <img
-                  src="/Image/location.jpg" // <-- replace with your image path
-                  alt="Mall"
-                  className="w-full h-40 object-cover rounded-xl mb-4"
-                />
+<div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 justify-items-stretch">
+  {/* Location */}
+  <button
+    onClick={handleLocationClick}
+    className="group w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+  >
+    <div className="text-center">
+      <img
+        src="/Image/location.jpg"
+        alt="Mall"
+        className="w-full h-40 object-cover rounded-xl mb-4"
+      />
+      <div
+        className={`w-16 h-16 ${colors.locationBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+      >
+        <MapPin className="w-8 h-8 text-white" />
+      </div>
+      <h3 className="text-xl font-bold text-white mb-2">Sri Vaari Hall A/c</h3>
+      <p className="text-blue-100 text-sm">NGO Colony</p>
+      <p className="text-blue-200 text-xs">Tirunelveli</p>
+    </div>
+  </button>
 
-                {/* Icon inside circle */}
-                <div
-                  className={`w-16 h-16 ${colors.locationBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <MapPin className="w-8 h-8 text-white" />
-                </div>
+  {/* AI Video */}
+  <button
+    onClick={handleVideoClick}
+    className="group w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+  >
+    <div className="text-center">
+      <div
+        className={`w-16 h-16 ${colors.videoBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+      >
+        <Video className="w-8 h-8 text-white" />
+      </div>
+      <h3 className="text-xl font-bold text-white mb-2">AI Video</h3>
+      <p className="text-blue-100 text-sm">Personal Message</p>
+      <p className="text-blue-200 text-xs">Tap to watch</p>
+    </div>
+  </button>
 
-                {/* Mall Details */}
-                <h3 className="text-xl font-bold text-white mb-2">Sri Vaari Hall A/c</h3>
-                <p className="text-blue-100 text-sm">NGO Colony</p>
-                <p className="text-blue-200 text-xs">Tirunelveli</p>
-              </div>
-            </button>
+  {/* E-Invitation */}
+  <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
+    <button
+      onClick={onOpenInvitation}
+      className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse`}
+    >
+      <div className="text-center">
+        <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <Mail className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">E-Invitation</h3>
+        <p className="text-blue-100 text-sm">Open Digital Invite</p>
+        <p className="text-blue-200 text-xs">Tap to view details</p>
+      </div>
+    </button>
+  </div>
+</div>
 
-
-            {/* AI Video */}
-            <button
-              onClick={handleVideoClick}
-              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
-            >
-              <div className="text-center">
-                <div className={`w-16 h-16 ${colors.videoBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <Video className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">AI Video</h3>
-                <p className="text-blue-100 text-sm">Personal Message</p>
-                <p className="text-blue-200 text-xs">Tap to watch</p>
-              </div>
-            </button>
-
-            {/* E-Invitation */}
-            <button
-              onClick={onOpenInvitation}
-              className={`group ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse `}
-            >
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">E-Invitation</h3>
-                <p className="text-blue-100 text-sm">Open Digital Invite</p>
-                <p className="text-blue-200 text-xs">Tap to view details</p>
-              </div>  
-            </button>
-          </div>
 
           {/* Quick Info */}
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
