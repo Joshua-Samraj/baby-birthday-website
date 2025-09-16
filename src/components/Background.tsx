@@ -1,25 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Play, Pause } from "lucide-react";
 
 const MusicPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPopup, setShowPopup] = useState<string | false>(false);
-
-  useEffect(() => {
-    const enableAudioOnScroll = () => {
-      if (audioRef.current && !isPlaying) {
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-          triggerPopup("🎵 Music Playing");
-        });
-        window.removeEventListener("scroll", enableAudioOnScroll);
-      }
-    };
-
-    window.addEventListener("scroll", enableAudioOnScroll);
-    return () => window.removeEventListener("scroll", enableAudioOnScroll);
-  }, [isPlaying]);
 
   const togglePlay = () => {
     if (audioRef.current) {
