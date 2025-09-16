@@ -8,7 +8,7 @@ const Footer = () => {
 
         {/* Company Info */}
         <div className="text-center md:text-left">
-          <h2 className="text-xl font-bold text-white mb-2">Digital Marketing Agency</h2>
+          <h2 className="text-xl font-bold text-white mb-2">DigiNest</h2>
           {/* <p className="text-sm leading-relaxed">
             We help businesses grow with creative digital solutions.  
             Transform your ideas into memorable experiences.
@@ -64,7 +64,7 @@ const Footer = () => {
 
       {/* Bottom - Copyright */}
       <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
-        &copy; {new Date().getFullYear()} Digital Marketing Agency. All rights reserved.
+        &copy; {new Date().getFullYear()} DigiNest. All rights reserved.
       </div>
     </footer>
   );
