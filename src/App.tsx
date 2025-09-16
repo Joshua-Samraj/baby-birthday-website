@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import EnvelopeInvitation from './components/EnvelopeInvitation';
 import Footer from './components/footer';
+import Background_music from './components/Background';
 function App() {
   const [showInvitation, setShowInvitation] = useState(false);
 
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
+      <Background_music />
       <div className="flex-1">
         {!showInvitation ? (
           <LandingPage onOpenInvitation={handleOpenInvitation} />
