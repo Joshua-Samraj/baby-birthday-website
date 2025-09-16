@@ -3,24 +3,23 @@ import LandingPage from './components/LandingPage';
 import EnvelopeInvitation from './components/EnvelopeInvitation';
 import Footer from './components/footer';
 import Background_music from './components/Background';
+
 function App() {
   const [showInvitation, setShowInvitation] = useState(false);
 
   const handleOpenInvitation = () => {
     setShowInvitation(true);
-    // Push a new history state so back button works
     window.history.pushState({ page: "invitation" }, "", "");
   };
 
   const handleBackToLanding = () => {
     setShowInvitation(false);
-    // Go back in history
     window.history.back();
   };
 
+  // Back button handling
   useEffect(() => {
     const handlePopState = () => {
-      // When user presses back, close invitation
       setShowInvitation(false);
     };
 
@@ -30,8 +29,14 @@ function App() {
     };
   }, []);
 
+  // Auto-scroll to top whenever showInvitation changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [showInvitation]);
+
   return (
     <div className="relative min-h-screen flex flex-col">
+
       <Background_music />
       <div className="flex-1">
         {!showInvitation ? (
@@ -49,7 +54,7 @@ function App() {
         )}
       </div>
 
-     <Footer />
+      <Footer />
     </div>
   );
 }
