@@ -67,7 +67,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const handleLocationClick = () => {
-    window.open('https://maps.google.com/?q=The+Garden+Venue+123+Celebration+Street', '_blank');
+    window.open('https://maps.app.goo.gl/SNJTCNoB98CZ7pCP6', '_blank');
   };
 
   const handleVideoClick = () => {
@@ -130,17 +130,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             {/* Location */}
             <button
               onClick={handleLocationClick}
-              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+              className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl col-span-full md:col-span-1"
             >
               <div className="text-center">
-                <div className={`w-16 h-16 ${colors.locationBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Mall Image */}
+                <img
+                  src="/Image/location.jpg" // <-- replace with your image path
+                  alt="Mall"
+                  className="w-full h-40 object-cover rounded-xl mb-4"
+                />
+
+                {/* Icon inside circle */}
+                <div
+                  className={`w-16 h-16 ${colors.locationBtn} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                >
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Location</h3>
-                <p className="text-blue-100 text-sm">The Garden Venue</p>
-                <p className="text-blue-200 text-xs">123 Celebration Street</p>
+
+                {/* Mall Details */}
+                <h3 className="text-xl font-bold text-white mb-2">Sri Vaari Hall A/c</h3>
+                <p className="text-blue-100 text-sm">NGO Colony</p>
+                <p className="text-blue-200 text-xs">Tirunelveli</p>
               </div>
             </button>
+
 
             {/* AI Video */}
             <button
@@ -160,7 +173,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             {/* E-Invitation */}
             <button
               onClick={onOpenInvitation}
-              className={`group ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse col-span-full md:col-span-1`}
+              className={`group ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-pulse `}
             >
               <div className="text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
