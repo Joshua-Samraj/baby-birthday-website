@@ -11,7 +11,7 @@ const colors = {
   gradientBg: "bg-gradient-to-br from-[#316280] via-[#D5B9A4] to-[#97000B]",
 
   // Text
-  headerText: "text-[#D5B9A4]", // beige text looks good on dark background
+  headerText: "text-[#ffffff]", // beige text looks good on dark background
   subText: "text-[#F5EBDD]", // lighter beige for subtitles
   star: "text-[#FFD700]", // golden star for highlights
 
@@ -156,9 +156,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           <div className="text-center mb-12">
             <div className="flex justify-center items-center mb-4">
               <Star className={`w-8 h-8 ${colors.star} mr-2 animate-pulse`} />
-              <h1 className={`text-4xl md:text-6xl font-bold ${colors.headerText} animate-fadeInUp`}>
-                Birthday Celebration
-              </h1>
+              <h1
+  className={`text-4xl md:text-6xl font-bold ${colors.headerText} animate-fadeInUp`}
+  style={{
+    textShadow: "2px 2px 4px rgba(0,0,0,0.8)"
+  }}
+>
+  Birthday Celebration
+</h1>
+
               <Star className={`w-8 h-8 ${colors.star} ml-2 animate-pulse`} />
             </div>
             <p className={`text-xl md:text-2xl ${colors.subText} animate-fadeInUp animation-delay-200`}>
@@ -196,7 +202,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
   <button
     onClick={handleLocationClick}
-    className="group w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+    className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl `}
   >
     <div className="text-center">
       <img
@@ -219,7 +225,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   {/* AI Video */}
   <button
     onClick={handleVideoClick}
-    className="group w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+    className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all duration-300 transform hover:scale-105 hover:shadow-2xl `}
   >
     <div className="text-center">
       <div
@@ -254,13 +260,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
 
           {/* Quick Info */}
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+            <div className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl `}>
               <Calendar className={`w-6 h-6 ${colors.quickInfoIconBlue} mx-auto mb-2`} />
               <p className={colors.quickInfoText}>12/10/25</p>
               <p className={colors.quickInfoSubText}>Sunday</p>
             </div>
             
-            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+            <div className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl `}>
               <div className="w-6 h-6 mx-auto mb-2 flex items-center justify-center">
                 {/* <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}>🕰️</span> */}
                 <Clock />
@@ -270,7 +276,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             </div>
             <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
             
-            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+            <div className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl `}>
               <Heart className={`w-6 h-6 ${colors.quickInfoIconPink} mx-auto mb-2`} />
               <p className={colors.quickInfoText}>1st Birthday</p>
               <p className={colors.quickInfoSubText}>Special Day</p>
@@ -285,7 +291,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               <p className={colors.quickInfoSubText}>Party Time</p>
             </div> */}
             <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
-            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+            <div className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl `}>
               <div className="w-60 h-6 mx-auto mb-2 flex items-center justify-center">
                 <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}></span>
               <Album />
@@ -313,7 +319,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        videoSrc="/videos/2.mp4"
+        videoSrc="/videos/CUT.mp4"
       />
     </div>
   );
