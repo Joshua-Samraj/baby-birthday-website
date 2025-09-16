@@ -1,10 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Play, Pause } from "lucide-react";
 
 const MusicPlayer: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPopup, setShowPopup] = useState<string | false>(false);
+
+  // Auto-play when page loads
+  useEffect(() => {
+    const playMusic = async () => {
+      if (audioRef.current) {
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+          triggerPopup("🎵 Music Playing");
+        } catch (err) {
+          // Auto-play failed (likely blocked by browser)
+          console.log("Auto-play blocked, user interaction required.");
+        }
+      }
+    };
+
+    playMusic();
+  }, []);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -32,11 +50,7 @@ const MusicPlayer: React.FC = () => {
           onClick={togglePlay}
           className="bg-white/10 backdrop-blur-md text-white p-3 rounded-full shadow-lg hover:bg-white/20 transition-all"
         >
-          {isPlaying ? (
-            <Pause className="w-6 h-6" />
-          ) : (
-            <Play className="w-6 h-6" />
-          )}
+          {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
         </button>
 
         <audio ref={audioRef} loop>

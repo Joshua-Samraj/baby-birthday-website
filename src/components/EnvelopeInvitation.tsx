@@ -111,7 +111,7 @@ const EnvelopeInvitation = () => {
     setTimeout(() => {
       setIsOpen(true);
       setIsOpening(false);
-    }, 2000);
+    }, 500);
   };
 
   return (

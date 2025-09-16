@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Mail, Video, Calendar, Heart, Star, X } from 'lucide-react';
+import { MapPin, Mail, Video, Calendar, Heart, Star, X ,Album ,Clock} from 'lucide-react';
 
 interface LandingPageProps {
   onOpenInvitation: () => void;
@@ -7,7 +7,7 @@ interface LandingPageProps {
 
 // Centralized Color Variables
 const colors = {
-  gradientBg: "bg-gradient-to-br from-pink-400 via-pink-500 to-rose-900",
+  gradientBg: "bg-gradient-to-br from-pink-400 via-pink-500 to-pink-900",
   headerText: "text-white",
   subText: "text-pink-100",
   star: "text-yellow-400",
@@ -107,7 +107,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
                 <div className={`aspect-video ${colors.mainPhotoBg} rounded-xl flex items-center justify-center overflow-hidden`}>
                   <img 
-                    src="Image/1.jpg" 
+                    src="Image/2.jpg" 
                     alt="Birthday Celebration" 
                     className="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500"
                   />
@@ -143,8 +143,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
       >
         <MapPin className="w-8 h-8 text-white" />
       </div>
-      <h3 className="text-xl font-bold text-white mb-2">Sri Vaari Hall A/c</h3>
-      <p className="text-blue-100 text-sm">NGO Colony</p>
+      <h3 className="text-xl font-bold text-white mb-2">Sri Vaari Balaji Hall A/c</h3>
+      <p className="text-blue-100 text-sm">NGO B' Colony , Near RTO Office</p>
       <p className="text-blue-200 text-xs">Tirunelveli</p>
     </div>
   </button>
@@ -196,11 +196,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
             
             <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
               <div className="w-6 h-6 mx-auto mb-2 flex items-center justify-center">
-                <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}>🕰️</span>
+                {/* <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}>🕰️</span> */}
+                <Clock />
               </div>
               <p className={colors.quickInfoText}>6:00 PM</p>
               <p className={colors.quickInfoSubText}>Start Time</p>
             </div>
+            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
             
             <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
               <Heart className={`w-6 h-6 ${colors.quickInfoIconPink} mx-auto mb-2`} />
@@ -208,12 +210,23 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               <p className={colors.quickInfoSubText}>Special Day</p>
             </div>
             
-            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+            </div>
+            {/* <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
               <div className="w-6 h-6 mx-auto mb-2 flex items-center justify-center">
                 <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}>🎉</span>
               </div>
               <p className={colors.quickInfoText}>Celebration</p>
               <p className={colors.quickInfoSubText}>Party Time</p>
+            </div> */}
+            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
+            <div className={`${colors.quickInfoBox} rounded-xl p-4 text-center`}>
+              <div className="w-60 h-6 mx-auto mb-2 flex items-center justify-center">
+                <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}></span>
+              <Album />
+              </div>
+              <p className={colors.quickInfoText}>Album</p>
+              <p className={colors.quickInfoSubText}>Comming Soon</p>
+            </div>
             </div>
           </div>
 
