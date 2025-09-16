@@ -9,14 +9,14 @@ const Footer = () => {
         {/* Company Info */}
         <div className="text-center md:text-left">
           <h2 className="text-xl font-bold text-white mb-2">Digital Marketing Agency</h2>
-          <p className="text-sm leading-relaxed">
+          {/* <p className="text-sm leading-relaxed">
             We help businesses grow with creative digital solutions.  
             Transform your ideas into memorable experiences.
-          </p>
+          </p> */}
         </div>
 
         {/* Services */}
-        <div className="text-center md:text-left">
+        {/* <div className="text-center md:text-left">
           <h3 className="text-lg font-semibold text-white mb-2">Our Services</h3>
           <ul className="text-sm space-y-1">
             <li> Invitation Cards</li>
@@ -25,7 +25,7 @@ const Footer = () => {
             <li> Event Management</li>
             <li> Digital Marketing Campaigns</li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Contact Info */}
         <div className="text-center md:text-left">
@@ -37,16 +37,16 @@ const Footer = () => {
             </a>
           </p>
           <p className="flex items-center justify-center md:justify-start gap-2 mt-1">
-            <Mail size={16} />
-            <a href="mailto:info@dma.com" className="hover:text-yellow-400 transition-colors">
+            {/* <Mail size={16} /> */}
+            {/* <a href="mailto:info@dma.com" className="hover:text-yellow-400 transition-colors">
               info@dma.com
-            </a>
+            </a> */}
           </p>
           <p className="mt-2">Tirunelveli, Tamil Nadu</p>
         </div>  
 
         {/* Social Links */}
-        <div className="text-center md:text-left">
+        {/* <div className="text-center md:text-left">
           <h3 className="text-lg font-semibold text-white mb-2">Follow Us</h3>
           <div className="flex justify-center md:justify-start gap-4 mt-1">
             <a href="#" className="hover:text-yellow-400 transition-colors">
@@ -59,7 +59,7 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom - Copyright */}
