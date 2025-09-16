@@ -5,6 +5,11 @@ export default {
     extend: {
 
       keyframes: {
+         drift: {
+          '0%': { transform: 'translate(var(--x-start), var(--y-start))' },
+          '50%': { transform: 'translate(var(--x-mid), var(--y-mid))' },
+          '100%': { transform: 'translate(var(--x-end), var(--y-end))' },
+        },
         
         // ... your existing keyframes
         float: {
@@ -30,6 +35,7 @@ export default {
         pulseBright: 'pulseBright 2s ease-in-out infinite',
         fadeInStagger: 'fadeInStagger 0.5s ease-out forwards',
         confettiFall: 'confettiFall 5s linear forwards',
+        drift: 'drift 10s ease-in-out infinite',
       },
     },
   },

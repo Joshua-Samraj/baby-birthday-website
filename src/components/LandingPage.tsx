@@ -7,31 +7,33 @@ interface LandingPageProps {
 
 // Centralized Color Variables
 const colors = {
-  gradientBg: "bg-gradient-to-br from-pink-400 via-pink-500 to-pink-900",
-  headerText: "text-white",
-  subText: "text-pink-100",
-  star: "text-yellow-400",
+  // Main gradient background
+  gradientBg: "bg-gradient-to-br from-[#316280] via-[#D5B9A4] to-[#97000B]",
+
+  // Text
+  headerText: "text-[#D5B9A4]", // beige text looks good on dark background
+  subText: "text-[#F5EBDD]", // lighter beige for subtitles
+  star: "text-[#FFD700]", // golden star for highlights
 
   // Main photo section
-  // mainPhotoOverlay: "bg-gradient-to-r from-pink-200 to-rose-100",
-  mainPhotoBg: "bg-gradient-to-br from-pink-100 to-rose-100",
-  mainPhotoOverlay2: "bg-gradient-to-t from-rose-900/30 to-transparent",
+  mainPhotoBg: "bg-gradient-to-br from-[#316280]/20 via-[#D5B9A4]/20 to-[#97000B]/20", // subtle gradient overlay
+  mainPhotoOverlay2: "bg-gradient-to-t from-[#97000B]/30 to-transparent",
 
   // Action buttons
-  locationBtn: "bg-gradient-to-br from-pink-400 to-rose-500",
-  videoBtn: "bg-gradient-to-br from-rose-400 to-fuchsia-600",
-  invitationBtn: "bg-gradient-to-br from-pink-500 to-fuchsia-600",
-  invitationBtnHover: "hover:from-pink-600 hover:to-fuchsia-700",
+  locationBtn: "bg-gradient-to-br from-[#316280] to-[#D5B9A4]", // blue → beige
+  videoBtn: "bg-gradient-to-br from-[#D5B9A4] to-[#97000B]", // beige → red
+  invitationBtn: "bg-gradient-to-br from-[#316280] to-[#97000B]", // blue → red
+  invitationBtnHover: "hover:from-[#2A4B61] hover:to-[#7B0009]", // darker shades for hover
 
   // Quick info cards
-  quickInfoBox: "bg-white/10 backdrop-blur-md border border-white/20",
-  quickInfoText: "text-white font-semibold",
-  quickInfoSubText: "text-pink-200 text-sm",
-  quickInfoIconBlue: "text-rose-300",   // swapped blue → rose
-  quickInfoIconPink: "text-fuchsia-300",
+  quickInfoBox: "bg-white/10 backdrop-blur-md border border-[#D5B9A4]/20",
+  quickInfoText: "text-[#FFFFFF] font-regular",
+  quickInfoSubText: "text-[#F5EBDD] text-sm",
+  quickInfoIconBlue: "text-[#316280]", // primary dark blue
+  quickInfoIconPink: "text-[#97000B]", // red for emphasis
 
   // Call-to-action button
-  ctaBtn: "bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600",
+  ctaBtn: "bg-gradient-to-r from-[#316280] to-[#97000B] hover:from-[#2A4B61] hover:to-[#7B0009]",
 };
 
 
@@ -75,7 +77,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   };
 
   return (
-    <div className={`min-h-screen ${colors.gradientBg}`}>
+    <div className={`min-h-screen bg-fixed ${colors.gradientBg}`}>
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-pattern opacity-10"></div>
@@ -84,6 +86,70 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
         <div className="absolute top-20 left-10 w-16 h-16 bg-blue-400 rounded-full opacity-20 animate-bounce"></div>
         <div className="absolute top-40 right-20 w-12 h-12 bg-indigo-400 rounded-full opacity-25 animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-20 h-20 bg-blue-300 rounded-full opacity-15 animate-bounce animation-delay-1000"></div>
+        {/* Birthday Elements */}
+<div className="absolute inset-0 pointer-events-none overflow-hidden">
+  {/* Balloons */}
+  {[...Array(10)].map((_, i) => (
+    <div
+      key={`balloon-${i}`}
+      className={`absolute w-10 h-16 text-4xl animate-float`}
+      style={{
+        left: `${Math.random() * 90}%`,
+        top: `${Math.random() * 80}%`,
+        animationDelay: `${Math.random() * 5}s`,
+      }}
+    >
+      🎈
+    </div>
+  ))}
+
+  {/* Cakes */}
+  {[...Array(5)].map((_, i) => (
+    <div
+      key={`cake-${i}`}
+      className="absolute text-2xl animate-bounce"
+      style={{
+        left: `${Math.random() * 90}%`,
+        bottom: `${Math.random() * 10}%`,
+        animationDelay: `${Math.random() * 3}s`,
+      }}
+    >
+      🍰
+    </div>
+  ))}
+
+  {/* Candles */}
+  {/* {[...Array(15)].map((_, i) => (
+    <div
+      key={`candle-${i}`}
+      className="absolute text-xl animate-pulse"
+      style={{
+        left: `${Math.random() * 95}%`,
+        top: `${Math.random() * 90}%`,
+        animationDelay: `${Math.random() * 2}s`,
+      }}
+    >
+      🕯️
+    </div>
+  ))} */}
+
+  {/* Stars for sparkle */}
+  {[...Array(20)].map((_, i) => (
+    <div
+      key={`star-${i}`}
+      className="absolute text-yellow-300 animate-pulse"
+      style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        fontSize: `${Math.random() * 14 + 8}px`,
+        animationDelay: `${Math.random() * 3}s`,
+      }}
+    >
+      ✨
+    </div>
+  ))}
+</div>
+
 
         <div className="relative z-10 container mx-auto px-4 py-12">
           {/* Header */}
@@ -113,7 +179,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                   />
                   <div className={`absolute inset-0 rounded-xl`}></div>
                   <div className="absolute bottom-6 left-6 text-white">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Amanda Sarah's 1st Birthday</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-2"> 1st Birthday</h2>
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-5 h-5" />
                       <span className="text-lg">12/10/25</span>
