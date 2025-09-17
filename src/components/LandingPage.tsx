@@ -88,7 +88,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
         <div className="absolute bottom-20 left-20 w-20 h-20 bg-blue-300 rounded-full opacity-15 animate-bounce animation-delay-1000"></div>
         {/* Birthday Elements */}
 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-  {/* Balloons */}
+  {/* Balloons */}  
   {[...Array(10)].map((_, i) => (
     <div
       key={`balloon-${i}`}
@@ -176,7 +176,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
           <div className="max-w-4xl mx-auto mb-12">
             <div className="relative group">
               <div className={`absolute inset-0 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300`}></div>
-              <div className="relative bg-white rounded-2xl p-2 shadow-2xl">
+              {/* <div className="relative bg-white rounded-2xl p-2 shadow-2xl"> */}
                 <div className={`aspect-video ${colors.mainPhotoBg} rounded-xl flex items-center justify-center overflow-hidden`}>
                   <img 
                     src="Image/2.jpg" 
@@ -184,13 +184,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                     className="w-full h-full object-cover rounded-xl hover:scale-105 transition-transform duration-500"
                   />
                   <div className={`absolute inset-0 rounded-xl`}></div>
-                  <div className="absolute bottom-6 left-6 text-white">
+                  <div className="absolute bottom-4 left-6 text-white">
                     <h2 className="text-2xl md:text-3xl font-bold mb-2"> 1st Birthday</h2>
                     <div className="flex items-center space-x-2">
                       <Calendar className="w-5 h-5" />
                       <span className="text-lg">12/10/25</span>
                     </div>
-                  </div>
+                  {/* </div> */}
                 </div>
               </div>
             </div>
@@ -319,7 +319,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        videoSrc="/videos/CUT.mp4"
+        videoSrc="/videos/new.mp4"
       />
     </div>
   );

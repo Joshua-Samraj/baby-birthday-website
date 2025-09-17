@@ -202,7 +202,7 @@ const EnvelopeInvitation = () => {
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
-        videoSrc="/videos/CUT.mp4"
+        videoSrc="/videos/new.mp4"
       />
     </div>
   );
