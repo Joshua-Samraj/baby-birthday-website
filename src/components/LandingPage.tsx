@@ -47,8 +47,9 @@ const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void; videoSrc: str
     >
       <div
         className="relative w-11/12 max-w-3xl bg-black rounded-xl shadow-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
       >
+        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 z-10 text-white hover:text-gray-300 transition"
@@ -56,15 +57,15 @@ const VideoModal: React.FC<{ isOpen: boolean; onClose: () => void; videoSrc: str
           <X size={28} />
         </button>
 
-        <video className="w-full h-auto" controls autoPlay>
+        {/* Video */}
+        <video className="w-full h-auto rounded-xl" controls autoPlay>
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
     </div>
   );
-};
-
+};  
 const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 

@@ -4,6 +4,7 @@ import EnvelopeInvitation from './components/EnvelopeInvitation';
 import Footer from './components/footer';
 import Background_music from './components/Background';
 
+
 function App() {
   const [showInvitation, setShowInvitation] = useState(false);
 
@@ -36,23 +37,24 @@ function App() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
-
-      <Background_music />
-      <div className="flex-1">
-        {!showInvitation ? (
-          <LandingPage onOpenInvitation={handleOpenInvitation} />
-        ) : (
-          <div className="relative">
-            <button
-              onClick={handleBackToLanding}
-              className="fixed top-4 left-4 z-50 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
-            >
-              ← Back
-            </button>
-            <EnvelopeInvitation />
-          </div>
-        )}
-      </div>
+    <Background_music />
+        <div className="flex-1">
+          {!showInvitation ? (
+            <LandingPage onOpenInvitation={handleOpenInvitation} />
+          ) : (
+            <div className="relative">
+              <button
+                onClick={handleBackToLanding}
+                className="fixed top-4 left-4 z-50 bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all duration-300"
+              >
+                ← Back
+              </button>
+              <EnvelopeInvitation />
+            </div>
+          )}
+        </div>
+        
+      
 
       <Footer />
     </div>
