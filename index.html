@@ -1,27 +1,38 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amanda Sarah's 1st Birthday Celebration - You're Invited!</title>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanda Sarah's 1st Birthday Celebration - You're Invited!</title>
 
-        <meta property="og:title" content="Amanda Sarah's 1st Birthday Celebration!" />
-    <meta property="og:description" content="You're invited to celebrate our little star's first birthday!" />
-    <meta property="og:image" content="https://baby-birthday-website-sooty.vercel.app/Image/invitation_1.png" />
-    <meta property="og:url" content="https://baby-birthday-website-sooty.vercel.app/" />
-    <meta property="og:type" content="website" />
-      </head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RH17F99504"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RH17F99504');
-</script>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <meta property="og:title" content="Amanda Sarah's 1st Birthday Celebration!" />
+  <meta property="og:description" content="You're invited to celebrate our little star's first birthday!" />
+  <meta property="og:image" content="https://baby-birthday-website-sooty.vercel.app/Image/invitation_1.png" />
+  <meta property="og:url" content="https://baby-birthday-website-sooty.vercel.app/" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RH17F99504"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RH17F99504');
+  </script>
+  <!-- End Google Analytics -->
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- Basic content in case JavaScript fails -->
+  <noscript>
+    <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+      <h1>Amanda Sarah's 1st Birthday Celebration!</h1>
+      <p>You're invited to celebrate our little star's first birthday!</p>
+      <p>Please enable JavaScript to view the full invitation.</p>
+    </div>
+  </noscript>
+</body>
 </html>
