@@ -61,6 +61,11 @@ body,
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
+  
+  .animate-floats {
+    animation: floats 15s linear infinite;
+  }
+  
   .animation-delay-200 {
     animation-delay: 0.2s;
   }
@@ -85,6 +90,18 @@ body,
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Balloon animation - floats from bottom to top */
+@keyframes floats {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    bottom: -10%;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(20deg);
+    bottom: 100%;
   }
 }
 
@@ -198,6 +215,7 @@ body,
   33% { transform: translateY(-10px) rotate(120deg); }
   66% { transform: translateY(5px) rotate(240deg); }
 }
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);

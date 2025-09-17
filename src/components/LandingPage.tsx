@@ -90,19 +90,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
         {/* Birthday Elements */}
 <div className="absolute inset-0 pointer-events-none overflow-hidden">
   {/* Balloons */}  
-  {[...Array(10)].map((_, i) => (
+{[...Array(40)].map((_, i) => {
+  const randomLeft = Math.random() * 90;
+  const randomDelay = Math.random() * 5;
+  const randomDuration = 10 + Math.random() * 10; // 10-20 seconds
+  const randomRotation = Math.random() * 20 - 10; // -10 to 10 degrees
+  
+  return (
     <div
       key={`balloon-${i}`}
-      className={`absolute w-10 h-16 text-4xl animate-float`}
+      className="absolute w-10 h-16 text-4xl"
       style={{
-        left: `${Math.random() * 90}%`,
-        top: `${Math.random() * 80}%`,
-        animationDelay: `${Math.random() * 5}s`,
+        left: `${randomLeft}%`,
+        bottom: '-10%',
+        animation: `floats ${randomDuration}s linear ${randomDelay}s infinite`,
+        transform: `rotate(${randomRotation}deg)`,
       }}
     >
       🎈
     </div>
-  ))}
+  );
+})}
 
   {/* Cakes */}
   {[...Array(5)].map((_, i) => (

@@ -31,6 +31,7 @@ export default {
       },
       animation: {
         // ... your existing animations
+        
         float: 'float 3s ease-in-out infinite',
         pulseBright: 'pulseBright 2s ease-in-out infinite',
         fadeInStagger: 'fadeInStagger 0.5s ease-out forwards',
