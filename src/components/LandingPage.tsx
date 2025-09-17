@@ -328,7 +328,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        videoSrc="/videos/new.mp4"
+        videoSrc="/videos/123.mp4"
       />
     </div>
   );
