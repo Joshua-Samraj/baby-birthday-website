@@ -187,7 +187,7 @@ const EnvelopeInvitation = () => {
   >
     <div className="w-full max-w-3xl mx-auto flex justify-center px-4">
       <img
-        src="/Image/invitation_1.png" // <-- replace with your image path
+        src="/Image/1234.png" // <-- replace with your image path
         alt="Birthday Invitation"
         className="rounded-2xl shadow-2xl w-full max-w-lg"
       />
