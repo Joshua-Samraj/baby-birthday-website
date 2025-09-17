@@ -85,10 +85,13 @@ const MusicPlayer: React.FC = () => {
           )}
         </button>
 
-        <audio ref={audioRef} loop>
-          <source src="/Music/2.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+        <audio ref={audioRef} loop onLoadedMetadata={() => {
+        if (audioRef.current) audioRef.current.volume = 0.5; // 🔊 30% volume
+      }}>
+        <source src="/Music/2.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
       </div>
 
       {/* Popup Notification */}
