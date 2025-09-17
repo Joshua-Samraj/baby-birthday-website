@@ -28,6 +28,20 @@ export default {
           '0%': { transform: 'translateY(-100vh) rotate(0deg)', opacity: 1 },
           '100%': { transform: 'translateY(100vh) rotate(720deg)', opacity: 0 },
         },
+        balloonRise: {
+          '0%': { 
+            transform: 'translateY(0) scale(0.8)',
+            opacity: 0.8
+          },
+          '10%': { 
+            transform: 'translateY(-10%) scale(1)',
+            opacity: 1
+          },
+          '100%': { 
+            transform: 'translateY(-100vh) scale(1.2)',
+            opacity: 0
+          },
+        }
       },
       animation: {
         // ... your existing animations
@@ -37,6 +51,7 @@ export default {
         fadeInStagger: 'fadeInStagger 0.5s ease-out forwards',
         confettiFall: 'confettiFall 5s linear forwards',
         drift: 'drift 10s ease-in-out infinite',
+         balloonRise: 'balloonRise 5s ease-in forwards',
       },
     },
   },
