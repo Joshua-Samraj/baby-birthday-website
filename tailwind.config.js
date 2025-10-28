@@ -5,6 +5,16 @@ export default {
     extend: {
 
       keyframes: {
+        backgroundImage: {
+        'paper-texture': "url('data:image/svg+xml,...')", // Add your SVG here
+        'page-gradient': 'linear-gradient(to right, #f5f5f5 0%, #fff 5%, #fff 95%, #f5f5f5 100%)',
+        'cover-gradient': 'linear-gradient(45deg, #8B6914 0%, #CD853F 50%, #8B6914 100%)',
+      },
+      boxShadow: {
+        'book-3d': '0 0 20px rgba(0, 0, 0, 0.3), inset 0 0 50px rgba(0, 0, 0, 0.1)',
+        'page-inset': 'inset 0 0 10px rgba(0, 0, 0, 0.05)',
+        'cover-inset': 'inset 0 0 30px rgba(0, 0, 0, 0.3)',
+      },
          drift: {
           '0%': { transform: 'translate(var(--x-start), var(--y-start))' },
           '50%': { transform: 'translate(var(--x-mid), var(--y-mid))' },
