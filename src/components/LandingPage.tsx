@@ -341,10 +341,10 @@ nbsp;         <button
       />
 
       {/* --- ADDED ALBUM MODAL --- */}
-      <AlbumModal
+      {/* <AlbumModal
         isOpen={isAlbumOpen}
         onClose={() => setIsAlbumOpen(false)}
-      />
+      /> */}
     </div>
   );
 };
