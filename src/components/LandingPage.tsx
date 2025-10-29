@@ -285,7 +285,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
                 <Clock />
               </div>
               <p className={colors.quickInfoText}>6:00 PM</p>
-nbsp;           <p className={colors.quickInfoSubText}>Start Time</p>
+              <p className={colors.quickInfoSubText}>Start Time</p>
             </div>
             <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
             

@@ -29,7 +29,8 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   // Use only your attached image files for pages
   const pages: string[] = [
     
-    '/Image/1.jpg',
+    // '/Image/1.jpg',
+    '/album/Brithday.jpg',
     '/album/(1)_left.jpg',
     '/album/(1)_right.jpg',
     '/album/(2)_left.jpg',
@@ -48,6 +49,40 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
     '/album/(8)_right.jpg',
     '/album/(9)_left.jpg',
     '/album/(9)_right.jpg',
+    '/album/(10)_left.jpg',
+    '/album/(10)_right.jpg',
+    '/album/(11)_left.jpg',
+    '/album/(11)_right.jpg',
+    '/album/(12)_left.jpg',
+    '/album/(12)_right.jpg',
+    '/album/(13)_left.jpg',
+    '/album/(13)_right.jpg',
+    '/album/(14)_left.jpg',
+    '/album/(14)_right.jpg',
+    '/album/(15)_left.jpg',
+    '/album/(15)_right.jpg',
+    '/album/(16)_left.jpg',
+    '/album/(16)_right.jpg',
+    '/album/(17)_left.jpg',
+    '/album/(17)_right.jpg',
+    '/album/(18)_left.jpg',
+    '/album/(18)_right.jpg',
+    '/album/(19)_left.jpg',
+    '/album/(19)_right.jpg',
+    '/album/(20)_left.jpg',
+    '/album/(20)_right.jpg',
+    '/album/(21)_left.jpg',
+    '/album/(21)_right.jpg',
+    '/album/(22)_left.jpg',
+    '/album/(22)_right.jpg',
+    '/album/(23)_left.jpg',
+    '/album/(23)_right.jpg',
+    '/album/(24)_left.jpg',
+    '/album/(24)_right.jpg',
+    '/album/(25)_left.jpg',
+    '/album/(25)_right.jpg',
+    '/album/(26)_left.jpg',
+    '/album/(26)_right.jpg',
   ];
 
   const totalPages: number = pages.length;
@@ -128,6 +163,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
             showCover={true}
             className="shadow-2xl"
             onFlip={handlePageChange}
+            flippingTime={1000}
           >
             {pages.map((src, index) => (
               <div className="bg-gray-100" key={`page-${index}`}>
