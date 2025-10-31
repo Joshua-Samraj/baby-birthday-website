@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react'; // <-- MODIFICATION: Added useEffect
 import HTMLFlipBook from 'react-pageflip';
 import { X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 
@@ -7,29 +7,70 @@ interface AlbumModalProps {
   onClose: () => void;
 }
 
+// This interface is an approximation of the react-pageflip ref
+interface PageFlip {
+  flipNext: () => void;
+  flipPrev: () => void;
+  turnToPage: (page: number) => void;
+}
 type FlipBookRef = {
-  pageFlip: () => {
-    flipNext: () => void;
-    flipPrev: () => void;
-    turnToPage: (page: number) => void;
-  };
+  pageFlip: () => PageFlip;
 };
 
 interface FlipEvent {
-  data: number;
+  data: number; // The new page number
 }
 
 const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   const flipBookRef = useRef<FlipBookRef | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null); // <-- MODIFICATION: Ref for the container
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [pageInput, setPageInput] = useState<string>('');
+
+  // --- Responsive Logic Start ---
+  // <-- MODIFICATION: All of this block is new
+  const originalWidth = 445 * 2; // react-pageflip renders 2 pages, so 445 * 2 = 890
+  const originalHeight = 300; // This seems small for 890 width, you might mean 445 wide for a SINGLE page.
+  
+  // *** IMPORTANT: Let's assume 445 is the width of ONE page. ***
+  // So the total book width is 445 * 2 = 890
+  // And the height is 300
+  const bookWidth = 890;
+  const bookHeight = 300; // Adjust this if 300 is wrong
+  const aspectRatio = bookHeight / bookWidth;
+
+  const [size, setSize] = useState({
+    width: bookWidth,
+    height: bookHeight,
+  });
+
+  useEffect(() => {
+    if (!isOpen) return; // Don't calculate if not open
+
+    const updateSize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        
+        // Use the smaller of container's width or the max book width
+        const newWidth = Math.min(containerWidth, bookWidth);
+        const newHeight = newWidth * aspectRatio;
+
+        setSize({ width: newWidth, height: newHeight });
+      }
+    };
+
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, [isOpen, aspectRatio]); // Recalculate if modal is opened
+  // --- Responsive Logic End ---
+
 
   if (!isOpen) return null;
 
   // Use only your attached image files for pages
   const pages: string[] = [
-    
-    // '/Image/1.jpg',
+    // IMPORTANT: Make sure these files are in your /public/album/ directory
     '/album/front.jpg',
     '/album/(1)_left.jpg',
     '/album/(1)_right.jpg',
@@ -111,6 +152,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   };
 
   const goToPage = (pageNumber: number) => {
+    // Note: react-pageflip is 0-indexed.
     const targetPage = Math.max(0, Math.min(pageNumber - 1, totalPages - 1));
     if (flipBookRef.current) {
       flipBookRef.current.pageFlip().turnToPage(targetPage);
@@ -136,6 +178,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
 
   const downloadCurrentPage = () => {
     const currentPageIndex = currentPage;
+    // This downloads the *currently visible* page (left or right)
     const imageUrl = pages[currentPageIndex];
     const link = document.createElement('a');
     link.href = imageUrl;
@@ -148,11 +191,11 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-8 transition-opacity duration-300" // <-- MODIFICATION: p-4 for mobile
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl"
+        className="relative w-full max-w-4xl mx-auto"
         onClick={e => e.stopPropagation()}
       >
         <button
@@ -162,15 +205,18 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
           <X size={32} />
         </button>
 
-        <div className="flex justify-center">
+        {/* This container is used for measuring width */}
+        <div ref={containerRef} className="flex justify-center w-full"> {/* <-- MODIFICATION: Added ref */}
           <HTMLFlipBook
             ref={flipBookRef}
-            width={445}
-            height={300}
+            width={size.width / 2}   // <-- MODIFICATION: Use state. Width is for ONE page.
+            height={size.height} // <-- MODIFICATION: Use state
+            size="stretch"     // <-- MODIFICATION: Helps with responsiveness
             showCover={true}
             className="shadow-2xl"
             onFlip={handlePageChange}
-            flippingTime={1000}
+            flippingTime={2500}
+            mobileScrollSupport={true} // <-- MODIFICATION: Good for mobile
           >
             {pages.map((src, index) => (
               <div className="bg-gray-100" key={`page-${index}`}>
@@ -184,6 +230,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
           </HTMLFlipBook>
         </div>
 
+        {/* --- CONTROLS --- */}
         <div className="flex flex-col items-center space-y-4 mt-6">
           <div className="flex items-center space-x-6">
             <form onSubmit={handlePageInputSubmit} className="flex items-center space-x-2">
