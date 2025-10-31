@@ -209,7 +209,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               </div>
             </div>
           </div>
-
+            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start mb-12">
+              <div 
+                onClick={() => setIsAlbumOpen(true)} // <-- Added onClick
+                className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer`} // <-- Added cursor-pointer
+              >
+              <div className="w-60 h-6 mx-auto mb-2 flex items-center justify-center">
+                <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}></span>
+              <Album />
+              </div>
+              <p className={colors.quickInfoText}>Album</p>
+              <p className={colors.quickInfoSubText}>Tap to open</p> {/* <-- Updated text */}
+            </div>
+            </div>
           {/* Action Buttons */}
 <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 justify-items-stretch">
   {/* Location */}
@@ -305,19 +317,7 @@ nbsp;             <p className={colors.quickInfoSubText}>Party Time</p>
             </div> */}
 
             {/* --- UPDATED ALBUM BUTTON --- */}
-            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start">
-              <div 
-                onClick={() => setIsAlbumOpen(true)} // <-- Added onClick
-                className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer`} // <-- Added cursor-pointer
-              >
-              <div className="w-60 h-6 mx-auto mb-2 flex items-center justify-center">
-                <span className={`${colors.quickInfoIconBlue} font-bold text-lg`}></span>
-              <Album />
-              </div>
-              <p className={colors.quickInfoText}>Album</p>
-              <p className={colors.quickInfoSubText}>Tap to open</p> {/* <-- Updated text */}
-            </div>
-            </div>
+
           </div>
 
           {/* CTA */}

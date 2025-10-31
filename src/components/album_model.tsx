@@ -50,6 +50,7 @@ const RotateDeviceOverlay = ({ isFullscreen }: { isFullscreen: boolean }) => {
 
   return (
     <div className="flex flex-col items-center justify-center bg-gray-900 text-white rounded-lg p-10 h-[300px] md:h-[400px]">
+      
       <div className="relative mb-6">
         <Smartphone size={64} className="animate-rotate-phone" />
       </div>
@@ -154,11 +155,123 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   // --- Page Data (Unchanged) ---
   const pages: string[] = [
     '/album/front.jpg',
+
     '/album/(1)_left.jpg',
+
     '/album/(1)_right.jpg',
-    // ... all your other pages ...
+
+    '/album/(2)_left.jpg',
+
+    '/album/(2)_right.jpg',
+
+    '/album/(3)_left.jpg',
+
+    '/album/(3)_right.jpg',
+
+    '/album/(4)_left.jpg',
+
+    '/album/(4)_right.jpg',
+
+    '/album/(5)_left.jpg',
+
+    '/album/(5)_right.jpg',
+
+    '/album/(6)_left.jpg',
+
+    '/album/(6)_right.jpg',
+
+    '/album/(7)_left.jpg',
+
+    '/album/(7)_right.jpg',
+
+    '/album/(8)_left.jpg',
+
+    '/album/(8)_right.jpg',
+
+    '/album/(9)_left.jpg',
+
+    '/album/(9)_right.jpg',
+
+    '/album/(10)_left.jpg',
+
+    '/album/(10)_right.jpg',
+
+    '/album/(11)_left.jpg',
+
+    '/album/(11)_right.jpg',
+
+    '/album/(12)_left.jpg',
+
+    '/album/(12)_right.jpg',
+
+    '/album/(13)_left.jpg',
+
+    '/album/(13)_right.jpg',
+
+    '/album/(14)_left.jpg',
+
+    '/album/(14)_right.jpg',
+
+    '/album/(15)_left.jpg',
+
+    '/album/(15)_right.jpg',
+
+    '/album/(16)_left.jpg',
+
+    '/album/(16)_right.jpg',
+
+    '/album/(17)_left.jpg',
+
+    '/album/(17)_right.jpg',
+
+    '/album/(18)_left.jpg',
+
+    '/album/(18)_right.jpg',
+
+    '/album/(19)_left.jpg',
+
+    '/album/(19)_right.jpg',
+
+    '/album/(20)_left.jpg',
+
+    '/album/(20)_right.jpg',
+
+    '/album/(21)_left.jpg',
+
+    '/album/(21)_right.jpg',
+
+    '/album/(22)_left.jpg',
+
+    '/album/(22)_right.jpg',
+
+    '/album/(23)_left.jpg',
+
+    '/album/(23)_right.jpg',
+
+    '/album/(24)_left.jpg',
+
+    '/album/(24)_right.jpg',
+
+    '/album/(25)_left.jpg',
+
+    '/album/(25)_right.jpg',
+
+    '/album/(26)_left.jpg',
+
+    '/album/(26)_right.jpg',
+
+    '/album/(27)_left.jpg',
+
+    '/album/(27)_right.jpg',
+
+    '/album/(28)_left.jpg',
+
+    '/album/(28)_right.jpg',
+
     '/album/(29)_left.jpg',
+
     '/album/(29)_right.jpg',
+
     '/album/back.jpg',
   ];
   const totalPages: number = pages.length;
