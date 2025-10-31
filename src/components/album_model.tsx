@@ -61,7 +61,7 @@ const RotateDeviceOverlay = ({ isFullscreen }: { isFullscreen: boolean }) => {
       
       {/* --- MODIFICATION: Button is now conditional --- */}
       {/* Only show this button if NOT already in fullscreen */}
-      {/* {!isFullscreen && (
+      {!isFullscreen && (
         <button
           onClick={handleForceRotate}
           className="flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
@@ -69,7 +69,7 @@ const RotateDeviceOverlay = ({ isFullscreen }: { isFullscreen: boolean }) => {
           <Fullscreen size={16} className="mr-2" />
           Enter Fullscreen & Rotate
         </button>
-      )} */}
+      )}
     </div>
   );
 };
@@ -155,123 +155,64 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   // --- Page Data (Unchanged) ---
   const pages: string[] = [
     '/album/front.jpg',
-
     '/album/(1)_left.jpg',
-
     '/album/(1)_right.jpg',
-
     '/album/(2)_left.jpg',
-
     '/album/(2)_right.jpg',
-
     '/album/(3)_left.jpg',
-
     '/album/(3)_right.jpg',
-
     '/album/(4)_left.jpg',
-
     '/album/(4)_right.jpg',
-
     '/album/(5)_left.jpg',
-
     '/album/(5)_right.jpg',
-
     '/album/(6)_left.jpg',
-
     '/album/(6)_right.jpg',
-
     '/album/(7)_left.jpg',
-
     '/album/(7)_right.jpg',
-
     '/album/(8)_left.jpg',
-
     '/album/(8)_right.jpg',
-
     '/album/(9)_left.jpg',
-
     '/album/(9)_right.jpg',
-
     '/album/(10)_left.jpg',
-
     '/album/(10)_right.jpg',
-
     '/album/(11)_left.jpg',
-
     '/album/(11)_right.jpg',
-
     '/album/(12)_left.jpg',
-
     '/album/(12)_right.jpg',
-
     '/album/(13)_left.jpg',
-
     '/album/(13)_right.jpg',
-
     '/album/(14)_left.jpg',
-
     '/album/(14)_right.jpg',
-
     '/album/(15)_left.jpg',
-
     '/album/(15)_right.jpg',
-
     '/album/(16)_left.jpg',
-
     '/album/(16)_right.jpg',
-
     '/album/(17)_left.jpg',
-
     '/album/(17)_right.jpg',
-
     '/album/(18)_left.jpg',
-
     '/album/(18)_right.jpg',
-
     '/album/(19)_left.jpg',
-
     '/album/(19)_right.jpg',
-
     '/album/(20)_left.jpg',
-
     '/album/(20)_right.jpg',
-
     '/album/(21)_left.jpg',
-
     '/album/(21)_right.jpg',
-
     '/album/(22)_left.jpg',
-
     '/album/(22)_right.jpg',
-
     '/album/(23)_left.jpg',
-
     '/album/(23)_right.jpg',
-
     '/album/(24)_left.jpg',
-
     '/album/(24)_right.jpg',
-
     '/album/(25)_left.jpg',
-
     '/album/(25)_right.jpg',
-
     '/album/(26)_left.jpg',
-
     '/album/(26)_right.jpg',
-
     '/album/(27)_left.jpg',
-
     '/album/(27)_right.jpg',
-
     '/album/(28)_left.jpg',
-
     '/album/(28)_right.jpg',
-
     '/album/(29)_left.jpg',
-
     '/album/(29)_right.jpg',
-
     '/album/back.jpg',
   ];
   const totalPages: number = pages.length;
