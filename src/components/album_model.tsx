@@ -57,7 +57,7 @@ const RotateDeviceOverlay = ({ isFullscreen }: { isFullscreen: boolean }) => {
         This album is best viewed in landscape mode.
       </p>
       
-      {/* Only show this button if NOT already in fullscreen */}
+
       {!isFullscreen && (
         <button
           onClick={handleForceRotate}
@@ -189,16 +189,16 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
 
   // --- Wrapper to close and exit fullscreen (Unchanged) ---
   const handleCloseModal = async () => {
-    // If we're in fullscreen, exit it first
+
     if (isFullscreen) {
       await handleExitFullscreen();
     }
-    // Then call the original onClose prop
+
     onClose();
   };
 
 
-  // --- Restored Navigation Helper Functions ---
+  // --- Navigation Helper Functions (Unchanged) ---
   const goToNextPage = () => {
     if (flipBookRef.current && currentPage < totalPages - 1) {
       flipBookRef.current.pageFlip().flipNext();
@@ -210,8 +210,9 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  // --- Other Helper Functions (Unchanged) ---
+  // --- Other Helper Functions ---
   const handlePageChange = (e: FlipEvent) => { setCurrentPage(e.data); };
+
   const goToPage = (pageNumber: number) => {
     const targetPage = Math.max(0, Math.min(pageNumber - 1, totalPages - 1));
     if (flipBookRef.current) {
@@ -219,6 +220,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
       setCurrentPage(targetPage);
     }
   };
+
   const handlePageInputSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const pageNum = parseInt(pageInput);
@@ -227,19 +229,39 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
       setPageInput('');
     }
   };
+
   const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === '' || /^\d+$/.test(value)) {
       setPageInput(value);
     }
   };
+
+  // --- UPDATED DOWNLOAD FUNCTION (Logic from previous request retained) ---
   const downloadCurrentPage = () => {
     const currentPageIndex = currentPage;
     const imageUrl = pages[currentPageIndex];
+
+    let downloadUrl = imageUrl;
+    let downloadFilename = imageUrl.split('/').pop() || `page-${currentPageIndex + 1}.jpg`;
+
+    // Regex to find numbered pair pages like /album/(1)_left.jpg
+    const pairRegex = /\/album\/\((\d+)\)_(left|right)\.jpg$/;
+    const match = imageUrl.match(pairRegex);
+
+    if (match) {
+      // match[1] is the captured number, e.g., "1"
+      const pageNumber = match[1];
+      
+      // Construct the new URL and filename as requested
+      downloadUrl = `/album_original/(${pageNumber}).jpg`;
+      downloadFilename = `(${pageNumber}).jpg`;
+    }
+    // If no match (e.g., front.jpg, back.jpg), the default values will be used.
+
     const link = document.createElement('a');
-    link.href = imageUrl;
-    const filename = imageUrl.split('/').pop() || `page-${currentPageIndex + 1}.jpg`;
-    link.download = filename;
+    link.href = downloadUrl;
+    link.download = downloadFilename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -257,10 +279,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
         onClick={e => e.stopPropagation()}
       >
         <div className="absolute -top-10 right-0 z-10 flex items-center space-x-4">
-          {/* Exit Fullscreen Button */}
-          
-          {/* Close button placed here to maintain original button placement */}
-          <button
+          <button
             onClick={handleCloseModal}
             className="text-white hover:text-gray-300 transition"
             title="Close Album"
@@ -319,7 +338,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   >
                     Go
                   </button>
-                  
+
                 </form>
                 <button
                   onClick={downloadCurrentPage}
@@ -329,7 +348,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   <Download size={16} />
                   <span className="text-sm">Download Page</span>
                 </button>
-{isFullscreen && (
+            {isFullscreen && (
             <button
               onClick={handleExitFullscreen}
               className="text-white hover:text-gray-300 transition"
@@ -341,7 +360,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
               </div>
               <div className="flex items-center justify-center space-x-4">
                 <button
-                  onClick={goToPrevPage} // THIS IS NOW FUNCTIONAL
+                  onClick={goToPrevPage}
                   disabled={currentPage === 0}
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition ${
                     currentPage === 0 
@@ -355,9 +374,9 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   <span className="text-sm font-medium">{currentPage + 1} / {totalPages}</span>
                 </div>
                 <button
-                  onClick={goToNextPage} // THIS IS NOW FUNCTIONAL
+                  onClick={goToNextPage}
                   disabled={currentPage === totalPages - 1}
-                  className={`flex items-center justify-center w-10 h-10 rounded-full transition ${
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition ${ // FIX: Removed trailing single quote '
                     currentPage === totalPages - 1
                       ? 'bg-gray-400 cursor-not-allowed' 
                       : 'bg-white/90 hover:bg-white text-gray-800'
@@ -371,6 +390,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
         )} 
 
       </div>
+      
     </div>
   );
 };

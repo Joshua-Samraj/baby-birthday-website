@@ -209,7 +209,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
               </div>
             </div>
           </div>
-            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-start mb-12">
+            <div className="col-span-2 md:col-span-1 flex justify-center md:justify-center mb-12">
               <div 
                 onClick={() => setIsAlbumOpen(true)} // <-- Added onClick
                 className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer`} // <-- Added cursor-pointer
@@ -284,7 +284,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onOpenInvitation }) => {
 
 
           {/* Quick Info */}
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="max-w-6xl justify-center mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className={`group w-full max-w-xs ${colors.invitationBtn} rounded-2xl p-6 ${colors.invitationBtnHover} transition-all text-center duration-300 transform hover:scale-105 hover:shadow-2xl `}>
               <Calendar className={`w-6 h-6 ${colors.quickInfoIconBlue} mx-auto mb-2`} />
               <p className={colors.quickInfoText}>12/10/25</p>
