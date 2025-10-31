@@ -30,7 +30,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   const pages: string[] = [
     
     // '/Image/1.jpg',
-    '/album/Brithday.jpg',
+    '/album/front.jpg',
     '/album/(1)_left.jpg',
     '/album/(1)_right.jpg',
     '/album/(2)_left.jpg',
@@ -83,6 +83,13 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
     '/album/(25)_right.jpg',
     '/album/(26)_left.jpg',
     '/album/(26)_right.jpg',
+    '/album/(27)_left.jpg',
+    '/album/(27)_right.jpg',
+    '/album/(28)_left.jpg',
+    '/album/(28)_right.jpg',
+    '/album/(29)_left.jpg',
+    '/album/(29)_right.jpg',
+    '/album/back.jpg',
   ];
 
   const totalPages: number = pages.length;
