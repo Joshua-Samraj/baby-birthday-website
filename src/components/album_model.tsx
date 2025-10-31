@@ -258,15 +258,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
       >
         <div className="absolute -top-10 right-0 z-10 flex items-center space-x-4">
           {/* Exit Fullscreen Button */}
-          {isFullscreen && (
-            <button
-              onClick={handleExitFullscreen}
-              className="text-white hover:text-gray-300 transition"
-              title="Exit Fullscreen"
-            >
-              <Shrink size={28} />
-            </button>
-          )}
+          
           {/* Close button placed here to maintain original button placement */}
           <button
             onClick={handleCloseModal}
@@ -337,6 +329,15 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   <Download size={16} />
                   <span className="text-sm">Download Page</span>
                 </button>
+{isFullscreen && (
+            <button
+              onClick={handleExitFullscreen}
+              className="text-white hover:text-gray-300 transition"
+              title="Exit Fullscreen"
+            >
+              <Shrink size={28} />
+            </button>
+          )}
               </div>
               <div className="flex items-center justify-center space-x-4">
                 <button
