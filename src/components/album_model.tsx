@@ -146,27 +146,27 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
   // --- Page Data (Unchanged) ---
   const pages: string[] = [
     '/album/front.jpg',
-    // ... all other pages
+    // ... all other pages
     '/album/(1)_left.jpg', '/album/(1)_right.jpg', '/album/(2)_left.jpg', '/album/(2)_right.jpg',
-    '/album/(3)_left.jpg', '/album/(3)_right.jpg', '/album/(4)_left.jpg', '/album/(4)_right.jpg',
-    '/album/(5)_left.jpg', '/album/(5)_right.jpg', '/album/(6)_left.jpg', '/album/(6)_right.jpg',
-    '/album/(7)_left.jpg', '/album/(7)_right.jpg', '/album/(8)_left.jpg', '/album/(8)_right.jpg',
-    '/album/(9)_left.jpg', '/album/(9)_right.jpg', '/album/(10)_left.jpg', '/album/(10)_right.jpg',
-    '/album/(11)_left.jpg', '/album/(11)_right.jpg', '/album/(12)_left.jpg', '/album/(12)_right.jpg',
-    '/album/(13)_left.jpg', '/album/(13)_right.jpg', '/album/(14)_left.jpg', '/album/(14)_right.jpg',
-    '/album/(15)_left.jpg', '/album/(15)_right.jpg', '/album/(16)_left.jpg', '/album/(16)_right.jpg',
-    '/album/(17)_left.jpg', '/album/(17)_right.jpg', '/album/(18)_left.jpg', '/album/(18)_right.jpg',
-    '/album/(19)_left.jpg', '/album/(19)_right.jpg', '/album/(20)_left.jpg', '/album/(20)_right.jpg',
-    '/album/(21)_left.jpg', '/album/(21)_right.jpg', '/album/(22)_left.jpg', '/album/(22)_right.jpg',
-    '/album/(23)_left.jpg', '/album/(23)_right.jpg', '/album/(24)_left.jpg', '/album/(24)_right.jpg',
-    '/album/(25)_left.jpg', '/album/(25)_right.jpg', '/album/(26)_left.jpg', '/album/(26)_right.jpg',
-    '/album/(27)_left.jpg', '/album/(27)_right.jpg', '/album/(28)_left.jpg', '/album/(28)_right.jpg',
-    '/album/(29)_left.jpg', '/album/(29)_right.jpg',
+    '/album/(3)_left.jpg', '/album/(3)_right.jpg', '/album/(4)_left.jpg', '/album/(4)_right.jpg',
+    '/album/(5)_left.jpg', '/album/(5)_right.jpg', '/album/(6)_left.jpg', '/album/(6)_right.jpg',
+    '/album/(7)_left.jpg', '/album/(7)_right.jpg', '/album/(8)_left.jpg', '/album/(8)_right.jpg',
+    '/album/(9)_left.jpg', '/album/(9)_right.jpg', '/album/(10)_left.jpg', '/album/(10)_right.jpg',
+    '/album/(11)_left.jpg', '/album/(11)_right.jpg', '/album/(12)_left.jpg', '/album/(12)_right.jpg',
+    '/album/(13)_left.jpg', '/album/(13)_right.jpg', '/album/(14)_left.jpg', '/album/(14)_right.jpg',
+    '/album/(15)_left.jpg', '/album/(15)_right.jpg', '/album/(16)_left.jpg', '/album/(16)_right.jpg',
+    '/album/(17)_left.jpg', '/album/(17)_right.jpg', '/album/(18)_left.jpg', '/album/(18)_right.jpg',
+    '/album/(19)_left.jpg', '/album/(19)_right.jpg', '/album/(20)_left.jpg', '/album/(20)_right.jpg',
+    '/album/(21)_left.jpg', '/album/(21)_right.jpg', '/album/(22)_left.jpg', '/album/(22)_right.jpg',
+    '/album/(23)_left.jpg', '/album/(23)_right.jpg', '/album/(24)_left.jpg', '/album/(24)_right.jpg',
+    '/album/(25)_left.jpg', '/album/(25)_right.jpg', '/album/(26)_left.jpg', '/album/(26)_right.jpg',
+    '/album/(27)_left.jpg', '/album/(27)_right.jpg', '/album/(28)_left.jpg', '/album/(28)_right.jpg',
+    '/album/(29)_left.jpg', '/album/(29)_right.jpg',
     '/album/back.jpg',
   ];
   const totalPages: number = pages.length;
 
-  // --- Fullscreen Exit Function (Unchanged) ---
+  // --- Fullscreen Exit Function (Unchanged) ---
   const handleExitFullscreen = async () => {
     try {
       if (document.exitFullscreen) {
@@ -187,39 +187,94 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
     }
   };
 
-  // --- NEW: Wrapper to close and exit fullscreen ---
-  const handleCloseModal = async () => {
-    // If we're in fullscreen, exit it first
-    if (isFullscreen) {
-      await handleExitFullscreen();
-    }
-    // Then call the original onClose prop
-    onClose();
-  };
+  // --- Wrapper to close and exit fullscreen (Unchanged) ---
+  const handleCloseModal = async () => {
+    // If we're in fullscreen, exit it first
+    if (isFullscreen) {
+      await handleExitFullscreen();
+    }
+    // Then call the original onClose prop
+    onClose();
+  };
 
+
+  // --- Restored Navigation Helper Functions ---
+  const goToNextPage = () => {
+    if (flipBookRef.current && currentPage < totalPages - 1) {
+      flipBookRef.current.pageFlip().flipNext();
+    }
+  };
+  const goToPrevPage = () => {
+    if (flipBookRef.current && currentPage > 0) {
+      flipBookRef.current.pageFlip().flipPrev();
+    }
+  };
 
   // --- Other Helper Functions (Unchanged) ---
-  const goToNextPage = () => { /* ... (Unchanged) ... */ };
-  const goToPrevPage = () => { /* ... (Unchanged) ... */ };
-  const handlePageChange = (e: FlipEvent) => { /* ... (Unchanged) ... */ setCurrentPage(e.data); };
-  const goToPage = (pageNumber: number) => { /* ... (Unchanged) ... */ };
-  const handlePageInputSubmit = (e: React.FormEvent<HTMLFormElement>) => { /* ... (Unchanged) ... */ };
-  const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => { /* ... (Unchanged) ... */ };
-  const downloadCurrentPage = () => { /* ... (Unchanged) ... */ };
+  const handlePageChange = (e: FlipEvent) => { setCurrentPage(e.data); };
+  const goToPage = (pageNumber: number) => {
+    const targetPage = Math.max(0, Math.min(pageNumber - 1, totalPages - 1));
+    if (flipBookRef.current) {
+      flipBookRef.current.pageFlip().turnToPage(targetPage);
+      setCurrentPage(targetPage);
+    }
+  };
+  const handlePageInputSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const pageNum = parseInt(pageInput);
+    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= totalPages) {
+      goToPage(pageNum);
+      setPageInput('');
+    }
+  };
+  const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || /^\d+$/.test(value)) {
+      setPageInput(value);
+    }
+  };
+  const downloadCurrentPage = () => {
+    const currentPageIndex = currentPage;
+    const imageUrl = pages[currentPageIndex];
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    const filename = imageUrl.split('/').pop() || `page-${currentPageIndex + 1}.jpg`;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  // --- End of Helper Functions ---
 
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-8 transition-opacity duration-300" 
-      onClick={handleCloseModal} // USE THE NEW WRAPPER FUNCTION HERE
+      onClick={handleCloseModal} 
     >
       <div
         className="relative w-full max-w-4xl mx-auto"
         onClick={e => e.stopPropagation()}
       >
         <div className="absolute -top-10 right-0 z-10 flex items-center space-x-4">
-          {/* The main close button is moved down to the controls area, but let's put it here for the user */}
-          
+          {/* Exit Fullscreen Button */}
+          {isFullscreen && (
+            <button
+              onClick={handleExitFullscreen}
+              className="text-white hover:text-gray-300 transition"
+              title="Exit Fullscreen"
+            >
+              <Shrink size={28} />
+            </button>
+          )}
+          {/* Close button placed here to maintain original button placement */}
+          <button
+            onClick={handleCloseModal}
+            className="text-white hover:text-gray-300 transition"
+            title="Close Album"
+          >
+            <X size={32} />
+          </button>
         </div>
 
 
@@ -282,17 +337,10 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   <Download size={16} />
                   <span className="text-sm">Download Page</span>
                 </button>
-<button
-            onClick={handleCloseModal} // USE THE NEW WRAPPER FUNCTION HERE
-            className="text-white hover:text-gray-300 transition"
-            title="Close Album"
-          >
-            <X size={32} />
-          </button>
               </div>
               <div className="flex items-center justify-center space-x-4">
                 <button
-                  onClick={goToPrevPage}
+                  onClick={goToPrevPage} // THIS IS NOW FUNCTIONAL
                   disabled={currentPage === 0}
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition ${
                     currentPage === 0 
@@ -306,7 +354,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
                   <span className="text-sm font-medium">{currentPage + 1} / {totalPages}</span>
                 </div>
                 <button
-                  onClick={goToNextPage}
+                  onClick={goToNextPage} // THIS IS NOW FUNCTIONAL
                   disabled={currentPage === totalPages - 1}
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition ${
                     currentPage === totalPages - 1
