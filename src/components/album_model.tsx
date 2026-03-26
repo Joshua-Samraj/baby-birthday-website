@@ -102,6 +102,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
 
   const pages: string[] = [
     '/album/FRONT page.jpeg',
+    '/album/blank.jpg',
     '/album/front.jpg',
     '/album/(1)_left.jpg', '/album/(1)_right.jpg', '/album/(2)_left.jpg', '/album/(2)_right.jpg',
     '/album/(3)_left.jpg', '/album/(3)_right.jpg', '/album/(4)_left.jpg', '/album/(4)_right.jpg',
@@ -118,7 +119,7 @@ const AlbumModal: React.FC<AlbumModalProps> = ({ isOpen, onClose }) => {
     '/album/(25)_left.jpg', '/album/(25)_right.jpg', '/album/(26)_left.jpg', '/album/(26)_right.jpg',
     '/album/(27)_left.jpg', '/album/(27)_right.jpg', '/album/(28)_left.jpg', '/album/(28)_right.jpg',
     '/album/(29)_left.jpg', '/album/(29)_right.jpg',
-    '/album/back.jpg','/album/last page.jpeg',
+    '/album/back.jpg','/album/blank.jpg','/album/last page.jpeg',
   ];
   const totalPages: number = pages.length;
 
